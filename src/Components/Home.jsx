@@ -18,6 +18,9 @@ const Home = () => {
     <div className="articles-list">
         <ArticlesList />
     </div>
+    <div className="view-all-articles">
+      <p className='all-articles-link'>Click <a href="/All_articles">Here</a> To View All Of Our Wonderful Articles!</p>
+    </div>
     </>
   )
 }

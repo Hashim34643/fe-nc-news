@@ -36,9 +36,10 @@ const ArticlesList = () => {
     <div className='articless-list'>
       <h2>Latest Articles</h2>
       <ul>
-        <div className="single-article">
+        <div className="all-articles">
         {paginatedArticles.map(article => (
-          <li key={article.title}>
+          <div className="single-article">
+          <li key={article.article_id}>
             <Link to={`/article/${article.article_id}`}>
               <h3>{article.title}</h3>
             </Link>
@@ -46,6 +47,7 @@ const ArticlesList = () => {
               <p>{article.author}</p>
               <p>{article.created_at}</p>
           </li>
+          </div>
         ))}
         </div>
       </ul>
