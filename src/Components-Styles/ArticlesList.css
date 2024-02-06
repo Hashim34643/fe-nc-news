@@ -23,10 +23,8 @@
 
   .articless-list {
     width: 100%;
-    background-color: brown;
   }
 
   .single-article {
-    background-color: red;
     display: flex;
   }
