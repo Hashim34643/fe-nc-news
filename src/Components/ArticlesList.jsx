@@ -30,6 +30,9 @@ const ArticlesList = () => {
   const startIndex = currentPage * articlesPerPage;
   const endIndex = startIndex + articlesPerPage;
   const paginatedArticles = articles.slice(startIndex, endIndex);
+  if (articles.length === 0) {
+    return <div>Loading...</div>;
+}
 
   return (
     <>
