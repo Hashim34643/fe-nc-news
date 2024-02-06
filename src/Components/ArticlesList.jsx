@@ -2,19 +2,21 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import { Link } from 'react-router-dom';
+import {format} from "date-fns";
 import "../Components-Styles/ArticlesList.css"
 
 const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const articlesPerPage = 3;
-
+  const formatDate = (dateString) => {
+    return format(new Date(dateString), 'MMMM dd, yyyy HH:mm');
+  };
   useEffect(() => {
     const fetchArticles = () => {
       axios.get(`https://backend-nc-news-l5zm.onrender.com/api/articles?limit=100000`)
         .then(response => {
           setArticles(response.data.articles);
-          console.log(response.data.articles)
         })
         .catch(error => {
           console.log("error", error);
@@ -41,14 +43,14 @@ const ArticlesList = () => {
       <ul>
         <div className="all-articles">
         {paginatedArticles.map(article => (
-          <div className="single-article">
+          <div className="single-article" key={article.article_id}>
           <li key={article.article_id}>
             <Link to={`/article/${article.article_id}`}>
               <h3>{article.title}</h3>
             </Link>
               <p>{article.topic}</p>
               <p>{article.author}</p>
-              <p>{article.created_at}</p>
+              <p>{formatDate(article.created_at)}</p>
           </li>
           </div>
         ))}
