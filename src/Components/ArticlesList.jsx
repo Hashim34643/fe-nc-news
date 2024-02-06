@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
+import { Link } from 'react-router-dom';
 import "../Components-Styles/ArticlesList.css"
 
 const ArticlesList = () => {
@@ -38,7 +39,9 @@ const ArticlesList = () => {
         <div className="single-article">
         {paginatedArticles.map(article => (
           <li key={article.title}>
+            <Link to={`/article/${article.article_id}`}>
               <h3>{article.title}</h3>
+            </Link>
               <p>{article.topic}</p>
               <p>{article.author}</p>
               <p>{article.created_at}</p>
