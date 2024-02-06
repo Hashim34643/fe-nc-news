@@ -1,11 +1,12 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const CommentsCard = () => {
     const [comments, setComments] = useState([]);
     const [showComments, setShowComments] = useState(false);
     const {article_id} = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (showComments) {
@@ -16,11 +17,18 @@ const CommentsCard = () => {
             })
         };
     }, [article_id, showComments]);
-
+    const handleComments = () => {
+        setShowComments(!showComments);
+        if (!showComments) {
+            navigate(`/article/${article_id}/comments`);
+        } else {
+            navigate(`/article/${article_id}`);
+        }
+    }
   return (
     <>
     <div className="comments">
-        <button onClick={ () => setShowComments(!showComments)}>{showComments ? "Hide comments" : "Show comments"}</button>
+        <button onClick={handleComments}>{showComments ? "Hide comments" : "Show comments"}</button>
         {showComments && (
             <ul>
                 {comments.map((comment) => (

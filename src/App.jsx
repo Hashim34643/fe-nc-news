@@ -10,12 +10,9 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-      </Routes>
-      <Routes>
         <Route path="/All_Articles" element={<HomeAllArticles />} />
-      </Routes>
-      <Routes>
         <Route path="/article/:article_id" element={<ArticleCard />} />
+        <Route path="/article/:article_id/comments" element={<ArticleCard />} />
       </Routes>
     </>
   )

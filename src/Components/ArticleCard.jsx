@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 import Header from "./Header";
 import CommentsCard from './CommentsCard';
+import Votes from './Votes';
 import { useParams } from 'react-router-dom';
 
 const ArticleCard = () => {
@@ -33,7 +34,7 @@ const ArticleCard = () => {
                 <p>Author: {article.author}</p>
                 <p>Created at: {article.created_at}</p>
                 <p>{article.body}</p>
-                <p>Votes: {article.votes}</p>
+            <Votes votes={article.votes}/>
             </div>
             <CommentsCard />
         </>

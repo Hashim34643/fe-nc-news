@@ -1,0 +1,21 @@
+.upvote-button {
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: lightgray;
+    margin-left: 5px;
+}
+
+.downvote-button {
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: lightgray;
+    margin-left: 5px;
+}
