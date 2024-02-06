@@ -2,16 +2,19 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import "../Components-Styles/ArticlesList.css"
+import {format} from "date-fns";
+
 
 const ArticlesListAllArticles = () => {
   const [articles, setArticles] = useState([]);
-
+  const formatDate = (dateString) => {
+    return format(new Date(dateString), 'MMMM dd, yyyy HH:mm');
+  };
   useEffect(() => {
     const fetchArticles = () => {
       axios.get(`https://backend-nc-news-l5zm.onrender.com/api/articles?limit=100000`)
         .then(response => {
           setArticles(response.data.articles);
-          console.log(response.data.articles)
         })
         .catch(error => {
           console.log("error", error);
@@ -33,7 +36,7 @@ const ArticlesListAllArticles = () => {
             </Link>
               <p>{article.topic}</p>
               <p>{article.author}</p>
-              <p>{article.created_at}</p>
+              <p>{formatDate(article.created_at)}</p>
           </li>
         ))}
         </div>
