@@ -1,0 +1,32 @@
+.pagination {
+    display: flex;
+    list-style: none;
+    color: black;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 22px;
+  }
+  
+  .pagination li {
+    cursor: pointer;
+    margin: 0 5px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    user-select: none;
+  }
+  
+  .pagination li.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .articless-list {
+    width: 100%;
+    background-color: brown;
+  }
+
+  .single-article {
+    background-color: red;
+    display: flex;
+  }
