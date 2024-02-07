@@ -12,7 +12,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/All_Articles" element={<HomeAllArticles />} />
         <Route path="/article/:article_id" element={<ArticleCard />} />
-        <Route path="/article/:article_id/comments" element={<ArticleCard />} />
       </Routes>
     </>
   )
