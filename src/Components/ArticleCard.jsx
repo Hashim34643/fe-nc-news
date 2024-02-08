@@ -5,7 +5,6 @@ import CommentsCard from './CommentsCard';
 import Votes from './Votes';
 import { useParams } from 'react-router-dom';
 import {format} from "date-fns";
-import AddComment from './AddComment';
 
 const ArticleCard = () => {
     const [article, setArticle] = useState(null);
@@ -44,7 +43,6 @@ const ArticleCard = () => {
             <Votes votes={article.votes}/>
             </div>
             <CommentsCard />
-            <AddComment articleId={article_id} onSubmit={handleSubmit}/>
         </>
     )
 }
