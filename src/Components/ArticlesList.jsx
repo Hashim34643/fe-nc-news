@@ -1,61 +1,79 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import { Link } from 'react-router-dom';
-import {format} from "date-fns";
+import { format } from "date-fns";
+import SortQueries from './SortQueries';
 import "../Components-Styles/ArticlesList.css"
 
 const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
+  const [sortBy, setSortBy] = useState("created_at");
+  const [sortOrder, setSortOrder] = useState("desc"); 
   const articlesPerPage = 3;
+
   const formatDate = (dateString) => {
     return format(new Date(dateString), 'MMMM dd, yyyy HH:mm');
   };
-  useEffect(() => {
-    const fetchArticles = () => {
-      axios.get(`https://backend-nc-news-l5zm.onrender.com/api/articles?limit=100000`)
-        .then(response => {
-          setArticles(response.data.articles);
-        })
-        .catch(error => {
-          console.log("error", error);
-        });
-    };
-    fetchArticles();
-  }, [currentPage]);
 
-
-  const handleClick = ({ selected }) => {
+  const handlePageClick = ({ selected }) => {
     setCurrentPage(selected);
   };
+
+  const handleSortByChange = (sortBy) => {
+    setSortBy(sortBy);
+  };
+  
+  const handleSortOrderChange = (sortOrder) => {
+    setSortOrder(sortOrder);
+  };
+  
   const startIndex = currentPage * articlesPerPage;
   const endIndex = startIndex + articlesPerPage;
   const paginatedArticles = articles.slice(startIndex, endIndex);
-  if (articles.length === 0) {
-    return <div>Loading...</div>;
-}
-
-  return (
-    <>
-    <div className='articless-list'>
-      <h2>Latest Articles</h2>
-      <ul>
-        <div className="all-articles">
-        {paginatedArticles.map(article => (
-          <div className="single-article" key={article.article_id}>
-          <li key={article.article_id}>
-            <Link to={`/article/${article.article_id}`}>
-              <h3>{article.title}</h3>
-            </Link>
-              <p>{article.topic}</p>
-              <p>{article.author}</p>
-              <p>{formatDate(article.created_at)}</p>
-          </li>
+  
+    const fetchArticles = () => {
+      axios.get(`https://backend-nc-news-l5zm.onrender.com/api/articles?sort_by=${sortBy}&order=${sortOrder}&limit=100000`)
+      .then(response => {
+        setArticles(response.data.articles);
+      })
+      .catch(error => {
+        console.error("error", error);
+      });
+    };
+    useEffect(() => {
+      fetchArticles();
+    }, [currentPage, sortBy, sortOrder]);
+    if (articles.length === 0) {
+      return <div>Loading...</div>;
+    }
+    
+    return (
+      <>
+ <SortQueries
+  searchParams={location.search}
+  handleSortByChange={handleSortByChange}
+  handleSortOrderChange={handleSortOrderChange}
+/>
+      <div className='articless-list'>
+        <h2>Latest Articles</h2>
+        <ul>
+          <div className="all-articles">
+            {paginatedArticles.map(article => (
+              <div className="single-article" key={article.article_id}>
+                <li key={article.article_id}>
+                  <Link to={`/article/${article.article_id}`}>
+                    <h3>{article.title}</h3>
+                  </Link>
+                  <p>{article.topic}</p>
+                  <p>{article.author}</p>
+                  <p>{formatDate(article.created_at)}</p>
+                </li>
+              </div>
+            ))}
           </div>
-        ))}
-        </div>
-      </ul>
+        </ul>
       </div>
       <ReactPaginate
         previousLabel={'previous'}
@@ -64,11 +82,11 @@ const ArticlesList = () => {
         pageCount={Math.ceil(articles.length / articlesPerPage)}
         marginPagesDisplayed={1}
         pageRangeDisplayed={1}
-        onPageChange={handleClick}
+        onPageChange={handlePageClick}
         containerClassName={'pagination'}
         activeClassName={'active'}
       />
-      </>
+    </>
   );
 }
 

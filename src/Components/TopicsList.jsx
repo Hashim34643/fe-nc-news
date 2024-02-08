@@ -16,7 +16,10 @@ const TopicsList = () => {
           console.error("Error fetching topics:", error);
         });
     }, []);
-  
+
+    if (topics.length === 0) {
+        return <div>Loading...</div>;
+    }
     return (
       <div>
         <h2>Trending Topics:</h2>
