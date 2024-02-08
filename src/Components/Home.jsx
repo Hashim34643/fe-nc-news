@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Header from './Header'
 import ArticlesList from './ArticlesList'
+import TopicsList from './TopicsList'
 import '../Components-Styles/Home.css'
 
 const Home = () => {
@@ -10,6 +11,9 @@ const Home = () => {
     <>
     <div className='home'>
         <Header />
+    </div>
+    <div className="topics-list">
+      <TopicsList />
     </div>
     <div className="text">
         <h1>Our Mission</h1>
