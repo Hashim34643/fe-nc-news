@@ -10,7 +10,6 @@ const TopicsList = () => {
       axios
         .get("https://backend-nc-news-l5zm.onrender.com/api/topics")
         .then((response) => {
-            console.log(response.data)
           setTopics(response.data);
         })
         .catch((error) => {
@@ -19,7 +18,7 @@ const TopicsList = () => {
     }, []);
 
     if (topics.length === 0) {
-        return <div>Loading...</div>;
+        return <div>Loading Trending Topics...</div>;
     }
     return (
       <div>

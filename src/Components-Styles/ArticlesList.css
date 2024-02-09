@@ -35,7 +35,7 @@
     width: 100%;
     min-height: 100px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
   }
 
   .single-article {
@@ -55,6 +55,15 @@
 
   .latest-div {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     margin-bottom: 15px;
+  }
+
+  .articles-loading {
+    margin-left: 20px;
+  }
+
+  .sortt {
+    display: flex;
+    justify-content: flex-start;
   }

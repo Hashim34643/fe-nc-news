@@ -37,7 +37,7 @@ const ArticleListAllArticles = () => {
   };
 
   if (articles.length === 0) {
-    return <div>Loading...</div>;
+    return <div>Loading All Articles...</div>;
 
   }
 
@@ -61,8 +61,8 @@ const ArticleListAllArticles = () => {
               <li key={article.title}>
                 <Link to={`/article/${article.article_id}`}>
                   <h3>{article.title}</h3>
-                </Link>
                 <img src={article.article_img_url} alt={`${article.title} cover image`} className='article-all-image'/>
+                </Link>
                 <p>{article.topic}</p>
                 <p>{article.author}</p>
                 <p>{formatDate(article.created_at)}</p>

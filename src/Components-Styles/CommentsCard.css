@@ -38,6 +38,7 @@
 
 .row {
     position: relative;
+    width: 410px;
     margin-top: 10px;
     margin-bottom: 10px;
 }

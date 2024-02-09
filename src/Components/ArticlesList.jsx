@@ -46,7 +46,7 @@ const ArticlesList = () => {
       fetchArticles();
     }, [currentPage, sortBy, sortOrder]);
     if (articles.length === 0) {
-      return <div>Loading...</div>;
+      return <div className='articles-loading'>Loading Latest Articles...</div>;
     }
     
     return (
@@ -54,11 +54,13 @@ const ArticlesList = () => {
         <div className="latest-div">
         <h2 className='latest-articles'>Latest Articles</h2>
         </div>
+        <div className="sortt">
  <SortQueries
   searchParams={location.search}
   handleSortByChange={handleSortByChange}
   handleSortOrderChange={handleSortOrderChange}
 />
+</div>
       <div className='articless-list'>
         <ul>
           <div className="all-articles">
@@ -67,8 +69,8 @@ const ArticlesList = () => {
                 <li key={article.article_id}>
                   <Link to={`/article/${article.article_id}`}>
                     <h3 className='article-title-link'>{article.title}</h3>
-                  </Link>
                   <img src={article.article_img_url} alt={`${article.title} cover image`} className='article-list-images'/>
+                  </Link>
                   <p>Topic: {article.topic}</p>
                   <p>Author: {article.author}</p>
                   <p>Date Published: {formatDate(article.created_at)}</p>

@@ -27,7 +27,7 @@ const ArticleCard = () => {
         fetchArticle();
     }, [article_id]);
     if (article === null) {
-        return <div>Loading...</div>;
+        return <div>Loading Article...</div>;
     }
     const handleSubmit = (comment) => {
 

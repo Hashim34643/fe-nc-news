@@ -5,6 +5,7 @@ import Home from "./Components/Home"
 import ArticleCard from './Components/ArticleCard';
 import HomeAllArticles from './Components/HomeAllArticles';
 import TopicArticles from './Components/TopicsArticles';
+import NotFound from './Components/NotFound';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/All_Articles" element={<HomeAllArticles />} />
         <Route path="/article/:article_id" element={<ArticleCard />} />
         <Route path="/topics/:topic_slug" element={<TopicArticles />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   )
