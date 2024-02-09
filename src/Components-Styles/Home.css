@@ -1,16 +1,29 @@
 .text {
     margin-left: 20px;
-    margin-top: 80px;
-    width: 180px;
-    height: 150px;
+    margin-top: 20px;
+    width: 280px;
+    height: 100px;
 }
 
 .articles-list {
-    margin-top: 200px;
+    margin-top: 50px;
     width: 100%;
 }
 
 .all-articles-link {
     margin-top: 20px;
     margin-left: 10px; 
+}
+
+.article-title-link {
+    color: blue;
+}
+
+.article-title-link:hover {
+    color: purple;
+}
+
+.topics-list {
+    margin-top: 150px;
+    margin-left: 20px;
 }

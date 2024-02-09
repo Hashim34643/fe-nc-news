@@ -36,6 +36,7 @@ const ArticleCard = () => {
             <Header></Header>
             <div className="article-card">
                 <h2>{article.title}</h2>
+                <img src={article.article_img_url} alt="" />
                 <p>Topic: {article.topic}</p>
                 <p>Author: {article.author}</p>
                 <p>Created at: {formatDate(article.created_at)}</p>

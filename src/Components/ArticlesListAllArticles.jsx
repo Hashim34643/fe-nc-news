@@ -36,6 +36,11 @@ const ArticleListAllArticles = () => {
     setSortOrder(sortOrder);
   };
 
+  if (articles.length === 0) {
+    return <div>Loading...</div>;
+
+  }
+
   return (
     <>
       <SortQueries

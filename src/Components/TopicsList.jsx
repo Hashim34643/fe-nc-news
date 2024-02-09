@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import "../Components-Styles/TopicsList.css"
 
 const TopicsList = () => {
     const [topics, setTopics] = useState([]);
@@ -23,10 +24,10 @@ const TopicsList = () => {
     return (
       <div>
         <h2>Trending Topics:</h2>
-        <ul>
+        <ul className='topicss-list'>
           {topics.map((topic) => (
             <li key={topic.slug}>
-              <Link to={`/topics/${topic.slug}`}>{topic.slug}</Link>
+              <Link to={`/topics/${topic.slug}`} className='topics-list-link'>{topic.slug}</Link>
             </li>
           ))}
         </ul>

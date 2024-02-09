@@ -57,18 +57,19 @@ const ArticlesList = () => {
   handleSortOrderChange={handleSortOrderChange}
 />
       <div className='articless-list'>
-        <h2>Latest Articles</h2>
+        <h2 className='latest-articles'>Latest Articles</h2>
         <ul>
           <div className="all-articles">
             {paginatedArticles.map(article => (
               <div className="single-article" key={article.article_id}>
                 <li key={article.article_id}>
                   <Link to={`/article/${article.article_id}`}>
-                    <h3>{article.title}</h3>
+                    <h3 className='article-title-link'>{article.title}</h3>
                   </Link>
-                  <p>{article.topic}</p>
-                  <p>{article.author}</p>
-                  <p>{formatDate(article.created_at)}</p>
+                  <img src={article.article_img_url} alt={`${article.title} cover image`} className='article-list-images'/>
+                  <p>Topic: {article.topic}</p>
+                  <p>Author: {article.author}</p>
+                  <p>Date Published: {formatDate(article.created_at)}</p>
                 </li>
               </div>
             ))}

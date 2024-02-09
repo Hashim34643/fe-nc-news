@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "../Components-Styles/SortQueries.css"
 
 const SortQueries = ({ searchParams, handleSortByChange, handleSortOrderChange }) => {
   const navigate = useNavigate();
@@ -19,9 +20,10 @@ const SortQueries = ({ searchParams, handleSortByChange, handleSortOrderChange }
   };
 
   return (
-    <div>
-      <label htmlFor="sortBy">Sort by:</label>
+    <div className="sort-queries">
+      <label htmlFor="sortBy" className="sort-by-label">Sort by:</label>
       <select
+        className="sort-by"
         id="sortBy"
         onChange={handleInternalSortByChange}
       >
@@ -31,6 +33,7 @@ const SortQueries = ({ searchParams, handleSortByChange, handleSortOrderChange }
       </select>
       <label htmlFor="sortOrder">Sort order:</label>
       <select
+        className="sort-order"
         id="sortOrder"
         onChange={handleInternalSortOrderChange}
       >
