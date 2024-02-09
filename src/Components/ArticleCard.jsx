@@ -3,8 +3,9 @@ import axios from 'axios';
 import Header from "./Header";
 import CommentsCard from './CommentsCard';
 import Votes from './Votes';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import {format} from "date-fns";
+import "../Components-Styles/ArticleCard.css"
 
 const ArticleCard = () => {
     const [article, setArticle] = useState(null);
@@ -36,14 +37,16 @@ const ArticleCard = () => {
             <Header></Header>
             <div className="article-card">
                 <h2>{article.title}</h2>
-                <img src={article.article_img_url} alt="" />
+                <img src={article.article_img_url} alt="" className='article-card-image'/>
                 <p>Topic: {article.topic}</p>
                 <p>Author: {article.author}</p>
                 <p>Created at: {formatDate(article.created_at)}</p>
-                <p>{article.body}</p>
+                <p className='body-text'>{article.body}</p>
             <Votes votes={article.votes}/>
             </div>
-            <CommentsCard />
+            <div className="comments-card">
+            <CommentsCard/>
+            </div>
         </>
     )
 }

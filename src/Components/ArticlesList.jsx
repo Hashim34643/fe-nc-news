@@ -51,13 +51,15 @@ const ArticlesList = () => {
     
     return (
       <>
+        <div className="latest-div">
+        <h2 className='latest-articles'>Latest Articles</h2>
+        </div>
  <SortQueries
   searchParams={location.search}
   handleSortByChange={handleSortByChange}
   handleSortOrderChange={handleSortOrderChange}
 />
       <div className='articless-list'>
-        <h2 className='latest-articles'>Latest Articles</h2>
         <ul>
           <div className="all-articles">
             {paginatedArticles.map(article => (

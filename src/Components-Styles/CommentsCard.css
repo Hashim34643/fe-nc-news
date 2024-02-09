@@ -1,0 +1,43 @@
+.show-comments {
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 5px;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.show-comments:hover {
+    background-color: lightgray;
+    transition: 0.3s;
+}
+
+.add-comment {
+    border-radius: 15px;
+    height: 30px;
+    width: 400px;
+    border: none;
+    outline: none;
+    background-color: #edeef0;
+    padding-left: 10px;
+    padding-right: 100px;
+}
+
+.post-comment {
+    height: 30px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    background-color: #eb4f38;
+    cursor: pointer;
+    font-size: 16px;
+    width: 80px;
+    position: absolute;
+    right: 11px;
+}
+
+.row {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

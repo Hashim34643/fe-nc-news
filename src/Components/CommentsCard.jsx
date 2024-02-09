@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { format } from 'date-fns';
+import "../Components-Styles/CommentsCard.css"
 
 const CommentsCard = () => {
     const [comments, setComments] = useState([]);
@@ -63,18 +64,19 @@ const CommentsCard = () => {
                 console.error("error", error);
             });
     };
-
     return (
         <>
             <div className="comments">
-                <button onClick={handleComments}>
+                <button onClick={handleComments} className='show-comments'>
                     {showComments ? "Hide comments" : "Show comments"}
                 </button>
                 {showComments && (
                     <>
                         <form onSubmit={handleSubmit}>
-                            <input type="text" value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Type Comment..." />
-                            <button type='submit'>Post Comment</button>
+                            <div className="row">
+                            <input type="text" value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Type Comment..." className='add-comment'/>
+                            <button className="post-comment" type='submit'>Post</button>
+                            </div>
                         </form>
                         <ul>
                             {comments.map((comment) => (
