@@ -1,0 +1,18 @@
+.article-card-image {
+    height: 200px;
+    width: 200px;
+}
+
+.article-card {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.body-text {
+    font-size: 24px;
+}
+
+.comments-card {
+    margin-top: 15px;
+    margin-left: 20px;
+}
